@@ -7,8 +7,11 @@ const newsLinkYPos = newsLink.offsetTop;
 
 // Function called to add shrink class to mobile nav elements
 const addShrinkClass = () => {
-    navDrawer.classList.add('shrink');
-    navClose.classList.add('shrink');
+    // Add slight delay before adding shrink class so not #drawer doesn't animate // on to close on browser window resize event
+    setTimeout(() => {
+        navDrawer.classList.add('shrink');
+        navClose.classList.add('shrink');
+    }, 500);
 };
 
 // Recursive function to add smooth scrolling to internal .recent-news location
@@ -83,6 +86,7 @@ window.addEventListener('resize', () => {
         navDrawer.classList.add('hide-nav');
         navClose.classList.add('hide-nav');
         trigramIcon.classList.remove('hide-nav');
+        addShrinkClass();
     }
 });
 
